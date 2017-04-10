@@ -16,6 +16,14 @@ Import slider module into you application
 import { Ng2SliderModule } from 'nextzy/ng2-slider';
 ```
 
+Import Stylesheet ( with SCSS ) in `styles.scss`
+
+```
+@import 'ng2-slider/styles.scss'
+
+...
+```
+
 Zero Configuration
 
 ```
@@ -30,12 +38,20 @@ Zero Configuration
 
 ### Options
 
-```
-model
-max
-min
-trigger
-```
+Opt | Type|  Default | Description
+--- | --- | --- | ---
+model | Model, FormControl | - | * Required
+min | Number | 0 | Min value of slider
+max | Number | 100 | Max value of slider
+
+
+### Theme Customize
+
+
+
+### Browser Support
+
+
 
 ## License
 
