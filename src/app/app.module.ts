@@ -3,11 +3,18 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { Ng2SliderComponent } from './app.component';
+import { SliderBarComponent } from './slider-bar/slider-bar.component';
+import { SliderPickerComponent } from './slider-picker/slider-picker.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    Ng2SliderComponent,
+    SliderBarComponent,
+    SliderPickerComponent
+  ],
+  exports: [
+  	Ng2SliderComponent
   ],
   imports: [
     BrowserModule,
@@ -15,6 +22,6 @@ import { AppComponent } from './app.component';
     HttpModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [Ng2SliderComponent]
 })
-export class AppModule { }
+export class Ng2SliderModule { }
