@@ -1,7 +1,37 @@
 @import '../config.scss';
 
-.slider-bar {
-	height: $slider-bar-height;
-	width: 100%;
-	background-color: $slider-bar-color;
+.slider-bar-container {
+	position: relative;
+	.slider-bar {
+		height: $slider-bar-height;
+		width: 100%;
+		background-color: $slider-bar-color;
+	}
+
+	.slider-labels {
+		margin-top: 15px;
+		width: 100%; 
+		display: flex;
+		.slider-label-item {
+			flex: 1;
+
+			span {
+				transform: translate(-50%, 0);
+				position: relative;
+				display: inline-block;
+			}
+
+			&:first-child {
+				span {
+					transform: translate(0%, 0);
+				}
+			}
+
+			&:last-child {
+				span {
+					transform: translate(-100%, 0);
+				}
+			}
+		}
+	}
 }
