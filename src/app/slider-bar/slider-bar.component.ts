@@ -35,10 +35,8 @@ export class SliderBarComponent implements OnInit, OnChanges {
   getLabels() {
   	const range = this.opts.label.range;
   	let list = _.range(this.min, this.max, range);
-  	list.push(this.max)
 
   	/* Set Label Style */
-  	this.style.label.width = (100 + (list.length - 1)) + "%"
   	return list.map((item: any) => {
   		return {
   			label: item,

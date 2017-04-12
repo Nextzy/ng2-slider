@@ -12,6 +12,16 @@
 		margin-top: 15px;
 		width: 100%; 
 		display: flex;
+		&::after {
+			display: block;
+			position: absolute;
+			content: '';
+			height: $slider-bar-height * 2;
+			width: $slider-bar-height / 4;
+			background-color: $slider-bar-color;
+			top: 0;
+			right: 0;
+		}
 		.slider-label-item {
 			flex: 1;
 
@@ -23,13 +33,13 @@
 
 			&:first-child {
 				span {
-					transform: translate(0%, 0);
+					transform: translate(-20%, 0);
 				}
 			}
 
 			&:last-child {
 				span {
-					transform: translate(-100%, 0);
+					transform: translate(20%, 0);
 				}
 			}
 
@@ -41,6 +51,15 @@
 				width: $slider-bar-height / 4;
 				background-color: $slider-bar-color;
 				top: 0;
+			}
+			
+			&.is-last {
+				position: absolute;
+				right: 0;
+
+				&::after {
+					display: none;
+				}
 			}
 		}
 	}

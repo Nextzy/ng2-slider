@@ -1,3 +1,13 @@
-<div class="slider-picker">
-  
+<div class="slider-pickers-container">
+    <div class="slider-picker-inner">
+    
+    <div appSliderPicker
+        class="slider-picker"
+        *ngIf="type === 'single'"
+        [defaultValue]='model'
+        [max]="max"
+        [min]="min"
+        (onChange)="onChange($event)"
+        ></div>
+    </div>
 </div>

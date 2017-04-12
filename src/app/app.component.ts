@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import * as _ from 'underscore';
 
 @Component({
@@ -9,7 +10,7 @@ import * as _ from 'underscore';
 export class Ng2SliderComponent implements OnInit, OnChanges {
 
 	/* Options */
-	@Input() model: any;
+	@Input() model: any = new FormControl(50);
 	@Input() defaultValue: any;
 	@Input() min: any;
 	@Input() max: any;
@@ -20,7 +21,7 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
   defaultOpts = {
   	defaultValue: 50,
   	min: 0,
-  	max: 100,
+  	max: 200,
   	readonly: false,
   	label: {
   		range: 10,

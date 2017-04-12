@@ -1,5 +1,8 @@
 @import './config.scss';
 
+:host /deep/ * {
+	box-sizing: border-box;
+}
 .ng2-slider-component {
 	position: relative;
 	padding: $slider-padding;
