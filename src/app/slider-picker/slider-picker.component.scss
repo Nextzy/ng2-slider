@@ -2,7 +2,7 @@
 
 .slider-pickers-container {
     position: absolute;
-    padding: $slider-padding;
+    padding: $slider-padding * 2 $slider-padding;
     display: block;
     top: -$slider-padding + ($slider-bar-height / 2);
     left: 0;
@@ -13,14 +13,14 @@
         display: block;
         width: 100%;
 
-    .slider-picker {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: #888;
-        transform: translate(-50%, 0);
-        border-radius: 50%;
-        top: 0;
-    }
+        .slider-picker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #888;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            top: 0;
+        }
     }
 }

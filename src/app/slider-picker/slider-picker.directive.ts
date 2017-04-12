@@ -44,12 +44,12 @@ export class SliderPickerDirective implements OnInit, OnChanges {
 
 	ngOnChanges() {
 		/* Detect Changes */
-
+		console.log("change")
 		// Todo -> Window Size Changes
 
 	}
 
-	setDefaultValue() {
+	public setDefaultValue() {
 		const range = this.max - this.min
 		const percentage = ( this.defaultValue.value / range ) * 100
 		const nextPos = ((percentage / 100) * this.parent.width);
@@ -89,7 +89,7 @@ export class SliderPickerDirective implements OnInit, OnChanges {
 	calculateNextPos(nextPos) {
 
 		const right = this.parent.width;
-		if(nextPos < this.parent.left) {
+		if(nextPos < 0) {
 			return 0;
 		} else if(nextPos > right) {
 			return right
