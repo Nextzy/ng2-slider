@@ -89,17 +89,17 @@ export class SliderPickerComponent implements OnInit {
 	}
 
 	calculateClickPos(xPos) {
-		const width = this.parent.width;
-		const left = this.parent.left;
-		const realXPos = xPos - left;
-		const percentage = (realXPos / this.parent.width) * 100
-		if(percentage < this.min) {
+		const percentage = ((xPos - this.parent.left) / this.parent.width) * 100
+		const range = this.max - this.min;
+		const nextValue = ((percentage / 100) * range) + this.min;
+
+		if(nextValue < this.min) {
 			return this.min;
-		} else if(percentage > this.max) {
+		} else if(nextValue > this.max) {
 			return this.max
 		} else {
 			const range = this.max - this.min;
-			return (percentage / 100) * range
+			return nextValue
 		}
 	}
 

@@ -5,13 +5,18 @@ import { Directive, Input, OnInit, OnChanges, ElementRef } from '@angular/core';
 })
 export class SliderBarDirective implements OnInit {
   @Input() model: any;
+  @Input() opts: any;
+  @Input() min: any;
+  @Input() max: any;
 
+  range: number = 100;
   parent: any;
 	type: any = 'single';
   constructor(private el: ElementRef) { }
 
   ngOnInit() {
 		this.parent = this.el.nativeElement.parentElement.getBoundingClientRect()
+    this.range = this.max - this.min;
     this.setPickerType();
     this.setBarPosition();
 
@@ -24,6 +29,11 @@ export class SliderBarDirective implements OnInit {
         /* Re-render Bar */
         this.setBarPosition();
       })
+  }
+
+  public reRenderBar() {
+    this.range = this.max - this.min;
+    this.setBarPosition();
   }
 
   setBarPosition() {
@@ -58,7 +68,7 @@ export class SliderBarDirective implements OnInit {
 
 
 	calculateNextPosFromValue(value) {
-		return (value / 100) * this.parent.width;
+		return ((value - this.min) / this.range) * this.parent.width;
 	}
 
 

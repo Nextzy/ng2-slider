@@ -3,12 +3,16 @@
 
   <ng2-slider
     [model]="demo.single"
+    [min]="20"
+    [max]="220"
   ></ng2-slider>
 
   values: {{demo.single.value}}
 
   <ng2-slider
     [model]="demo.range"
+    [min]="30"
+    [max]="180"
   ></ng2-slider>
 
   values: {{demo.range.value}}

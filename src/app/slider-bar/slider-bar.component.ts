@@ -1,4 +1,5 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, ViewChild } from '@angular/core';
+import { SliderBarDirective } from './slider-bar.directive' 
 import * as _ from 'underscore';
 
 @Component({
@@ -6,8 +7,9 @@ import * as _ from 'underscore';
   templateUrl: './slider-bar.component.html',
   styleUrls: ['./slider-bar.component.scss']
 })
-export class SliderBarComponent implements OnInit {
+export class SliderBarComponent implements OnInit, OnChanges {
 
+	@ViewChild(SliderBarDirective) bar: SliderBarDirective;
 	@Input() min: number = 0;
 	@Input() max: number = 100;
 	@Input() model: any;
@@ -19,6 +21,8 @@ export class SliderBarComponent implements OnInit {
 			"width": "100%" 
 		}
 	}
+
+	isInit: boolean = false;
 	
   constructor() { }
 
@@ -26,6 +30,13 @@ export class SliderBarComponent implements OnInit {
   	/* Compute Label */
 
   	this.labels = this.getLabels();
+	  this.isInit = true;
+  }
+
+  ngOnChanges() {
+	  if(this.isInit) {
+		  this.bar.reRenderBar();
+	  }
   }
 
   getLabels() {

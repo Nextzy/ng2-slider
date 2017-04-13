@@ -32,6 +32,7 @@ export class SliderPickerDirective implements OnInit, OnChanges {
 	parent: any;
 	currentPos: any;
 	isInit: boolean = false;
+	range: number = 100;
 
 	constructor(private el: ElementRef) {
 		this.onTouchDragHanlder = this.onTouchDragHanlder.bind(this);
@@ -44,6 +45,7 @@ export class SliderPickerDirective implements OnInit, OnChanges {
 		/* Init Data */
 		this.parent = this.el.nativeElement.parentElement.getBoundingClientRect()
 		this.currentPos = this.el.nativeElement.getBoundingClientRect()
+		this.range = this.max - this.min;
 		
 		/* Set Default Value */
 		this.setDefaultValue();
@@ -60,10 +62,7 @@ export class SliderPickerDirective implements OnInit, OnChanges {
 	}
 
 	public setDefaultValue() {
-		const range = this.max - this.min
-		const percentage = ( this.defaultValue / range ) * 100
-		const nextPos = ((percentage / 100) * this.parent.width);
-
+		const nextPos = this.calculateNextPosFromValue(this.defaultValue);
 		this.el.nativeElement.style.left = nextPos + "px";
 	}
 
@@ -87,14 +86,14 @@ export class SliderPickerDirective implements OnInit, OnChanges {
 	calculateNextValue(nextPos) {
 		
 		const percentage = (nextPos / this.parent.width) * 100
-		if(percentage < this.min) {
+		const range = this.max - this.min;
+		const nextValue = ((percentage / 100) * range) + this.min;
+
+		if(nextValue < this.min) {
 			return this.min;
-		} else if(percentage > this.max) {
+		} else if(nextValue > this.max) {
 			return this.max
 		} else {
-			const range = this.max - this.min;
-			const nextValue = (percentage / 100) * range;
-
 			if(this.maxValue !== undefined) {
 				if(nextValue < this.maxValue) {
 					return nextValue;
@@ -130,7 +129,7 @@ export class SliderPickerDirective implements OnInit, OnChanges {
 	}
 
 	calculateNextPosFromValue(value) {
-		return (value / 100) * this.parent.width;
+		return ((value - this.min)/ this.range) * this.parent.width;
 	}
 
 	render(nextPos) {

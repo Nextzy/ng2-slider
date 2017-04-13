@@ -2,6 +2,9 @@
 	<div class="slider-bar">
 		<div appSliderBar
 			class="slider-bar-highlight" 
+			[min]="min"
+			[max]="max"
+			[opts]="opts"
 			[model]="model"></div>
 	</div>
 	<div class="slider-labels" [ngStyle]="style.label">

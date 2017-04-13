@@ -27,10 +27,13 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
   	label: {
   		range: 10,
   		custom: '{{value}}'
-  	}
+  	},
+	popover: {
+		autohide: true
+	}
   }
 
-  sliderModel: FormControl = new FormControl(0);
+  sliderModel: FormControl = new FormControl();
   options: any = {}
 
   constructor() {
@@ -39,11 +42,31 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
 
   ngOnInit() {
   	/* Initial Slider */
-  	// console.log(this.options);
+
+	this.setConfiguration()
+	this.setSliderValue()
   }
 
   ngOnChanges() {
   	/* Detect Input() Changes */
 	
+  }
+
+  setConfiguration() {
+	  if(this.min !== undefined) {
+		  this.options.min = this.min;
+	  }
+
+	  if(this.max !== undefined) {
+		  this.options.max = this.max;
+	  }
+
+	  if(this.readonly !== undefined) {
+		  this.options.readonly = this.readonly
+	  }
+  }
+
+  setSliderValue() {
+	  this.sliderModel.setValue(this.model.value);
   }
 }
