@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { Ng2SliderModule } from '../app.module';
-import { Ng2SliderDemoComponent } from './demo.component'
+import { Ng2SliderDemoComponent } from './demo.component';
 
 @NgModule({
   declarations: [

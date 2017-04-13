@@ -10,7 +10,7 @@ import * as _ from 'underscore';
 export class Ng2SliderComponent implements OnInit, OnChanges {
 
 	/* Options */
-	@Input() model: any = new FormControl([20, 80]);
+	@Input() model: any;
 	@Input() defaultValue: any;
 	@Input() min: any;
 	@Input() max: any;
@@ -23,12 +23,14 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
   	min: 0,
   	max: 100,
   	readonly: false,
+	trigger: 5,
   	label: {
   		range: 10,
   		custom: '{{value}}'
   	}
   }
 
+  sliderModel: FormControl = new FormControl(0);
   options: any = {}
 
   constructor() {
@@ -37,7 +39,7 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
 
   ngOnInit() {
   	/* Initial Slider */
-  	console.log(this.options);
+  	// console.log(this.options);
   }
 
   ngOnChanges() {

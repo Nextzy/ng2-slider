@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, Input, Renderer, ElementRef, Output, EventEmitter, ViewChild } from '@angular/core';
 import { SliderPickerDirective } from './slider-picker.directive';
+import Utils from '../utils'
 
 import * as Hammer from 'hammerjs';
 import * as _ from 'underscore';
@@ -14,11 +15,13 @@ import * as _ from 'underscore';
 })
 export class SliderPickerComponent implements OnInit {
 
-	@ViewChild(SliderPickerDirective) picker1;
+	@ViewChild(SliderPickerDirective) picker;
+	@ViewChild("picker3") picker3;
 	@Input() min: number = 0;
 	@Input() max: number = 100;
 	@Input() opts: any;
 	@Input() model: any;
+	@Input() sModel: any;
 
 
 	type: any = 'single';
@@ -43,18 +46,47 @@ export class SliderPickerComponent implements OnInit {
 		}
 	}
 
+	onFinish({ pos, value, index }) {
+		if(index == undefined) {
+			this.model.setValue(value)
+			this.sModel.setValue(value)
+		} else {
+			let existValue = this.model.value
+			existValue[index] = value
+
+			this.model.setValue(existValue)
+			this.sModel.setValue(existValue)
+		}
+	}
+
 	clickOnBar($event) {
 
-		const nextVal = this.calculateClickPos($event.clientX)
+		let nextVal = this.calculateClickPos($event.clientX)
+		const trigger = this.opts.trigger || false;
+
+		/* Trigger Mode */
+		if(trigger) {
+			nextVal = this.calculateTriggerValue(nextVal)
+		}
+
 		if(this.type === 'single') {
 			this.model.setValue(nextVal)
 		} else {
-
+			const currentValue = this.model.value;
+			const cloneArray = _.clone(currentValue)
+			const closet = cloneArray.sort((a, b) => Math.abs(nextVal - a) - Math.abs(nextVal - b))[0];
+			
+			if(closet === currentValue[0]) { 
+				this.model.setValue([nextVal, currentValue[1]])
+			} else {
+				this.model.setValue([currentValue[0], nextVal])
+			}
 		}
-
-		/* Set new picker position */
-		this.picker1.setDefaultValue()
 	} 
+
+	calculateTriggerValue(value) {
+		return Utils.calculateTriggerValue(value, this.opts);
+	}
 
 	calculateClickPos(xPos) {
 		const width = this.parent.width;
