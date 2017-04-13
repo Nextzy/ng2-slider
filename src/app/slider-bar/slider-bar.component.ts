@@ -6,7 +6,7 @@ import * as _ from 'underscore';
   templateUrl: './slider-bar.component.html',
   styleUrls: ['./slider-bar.component.scss']
 })
-export class SliderBarComponent implements OnInit {
+export class SliderBarComponent implements OnInit, OnChanges {
 
 	@Input() min: number = 0;
 	@Input() max: number = 100;
@@ -26,6 +26,10 @@ export class SliderBarComponent implements OnInit {
   	/* Compute Label */
 
   	this.labels = this.getLabels();
+  }
+
+  ngOnChanges() {
+	  console.log("bar - changes")
   }
 
   getLabels() {

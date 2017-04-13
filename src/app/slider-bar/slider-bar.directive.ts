@@ -3,7 +3,7 @@ import { Directive, Input, OnInit, OnChanges, ElementRef } from '@angular/core';
 @Directive({
   selector: '[appSliderBar]'
 })
-export class SliderBarDirective implements OnInit, OnChanges {
+export class SliderBarDirective implements OnInit {
   @Input() model: any;
 
   parent: any;
@@ -13,12 +13,17 @@ export class SliderBarDirective implements OnInit, OnChanges {
   ngOnInit() {
 		this.parent = this.el.nativeElement.parentElement.getBoundingClientRect()
     this.setPickerType();
-
     this.setBarPosition();
-  }
 
-  ngOnChanges() {
-    this.setBarPosition();
+    /* Detect Model Changes */
+    this
+      .model
+      .valueChanges
+      .subscribe((value) => {
+
+        /* Re-render Bar */
+        this.setBarPosition();
+      })
   }
 
   setBarPosition() {
@@ -31,6 +36,11 @@ export class SliderBarDirective implements OnInit, OnChanges {
 
   setSingleBarPosition() {
     
+    const value = this.model.value;
+    const rightPos = this.calculateNextPosFromValue(value);
+
+		this.el.nativeElement.style.left = 0 + "px";
+    this.el.nativeElement.style.width = rightPos + "px";
   }
 
   setRangeBarPosition() {

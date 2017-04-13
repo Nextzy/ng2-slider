@@ -29,11 +29,6 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
   	}
   }
 
-  example: any = {
-	  min: new FormControl(0),
-	  max: new FormControl(200)
-  }
-
   options: any = {}
 
   constructor() {
