@@ -5,9 +5,33 @@
         #picker1
         class="slider-picker"
         *ngIf="type === 'single'"
-        [defaultValue]='model'
+        [defaultValue]='model.value'
         [max]="max"
         [min]="min"
+        (onChange)="onChange($event)"
+        ></div>
+
+    <div appSliderPicker
+        #picker2
+        class="slider-picker"
+        *ngIf="type === 'range'"
+        [defaultValue]='model.value[0]'
+        [max]="max"
+        [min]="min"
+        [index]="0"
+        [maxValue]="model.value[1]"
+        (onChange)="onChange($event)"
+        ></div>
+
+    <div appSliderPicker
+        #picker3
+        class="slider-picker"
+        *ngIf="type === 'range'"
+        [defaultValue]='model.value[1]'
+        [max]="max"
+        [min]="min"
+        [minValue]="model.value[0]"
+        [index]="1"
         (onChange)="onChange($event)"
         ></div>
     </div>

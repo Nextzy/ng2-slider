@@ -10,7 +10,7 @@ import * as _ from 'underscore';
 export class Ng2SliderComponent implements OnInit, OnChanges {
 
 	/* Options */
-	@Input() model: any = new FormControl(50);
+	@Input() model: any = new FormControl([20, 80]);
 	@Input() defaultValue: any;
 	@Input() min: any;
 	@Input() max: any;
@@ -21,7 +21,7 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
   defaultOpts = {
   	defaultValue: 50,
   	min: 0,
-  	max: 200,
+  	max: 100,
   	readonly: false,
   	label: {
   		range: 10,

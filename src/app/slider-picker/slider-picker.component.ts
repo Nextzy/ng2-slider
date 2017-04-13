@@ -30,15 +30,27 @@ export class SliderPickerComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.setPickerType();
 	}
 
-	onChange({ pos, value }) {
-		this.model.setValue(value)
+	onChange({ pos, value, index }) {
+		if(index == undefined) {
+			this.model.setValue(value)
+		} else {
+			let existValue = this.model.value
+			existValue[index] = value
+			this.model.setValue(existValue)
+		}
 	}
 
 	clickOnBar($event) {
+
 		const nextVal = this.calculateClickPos($event.clientX)
-		this.model.setValue(nextVal)
+		if(this.type === 'single') {
+			this.model.setValue(nextVal)
+		} else {
+
+		}
 
 		/* Set new picker position */
 		this.picker1.setDefaultValue()
@@ -56,6 +68,30 @@ export class SliderPickerComponent implements OnInit {
 		} else {
 			const range = this.max - this.min;
 			return (percentage / 100) * range
+		}
+	}
+
+	setPickerType() {
+		const modelType = this.model.constructor.name;
+
+		switch(modelType) {
+			case "FormControl":
+				const modelValueType = typeof this.model.value
+				switch(modelValueType) {
+					case "number":
+						this.type = 'single';
+						return;
+					case "object":
+						const length = this.model.value.length
+						if(length === 2) {
+							this.type = 'range';
+						} else {
+							this.type = 'single';
+						}
+						return;
+					default:
+						return;
+				}
 		}
 	}
 }
