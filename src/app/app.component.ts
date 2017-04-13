@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import * as _ from 'underscore';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ng2-slider',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -29,6 +29,11 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
   	}
   }
 
+  example: any = {
+	  min: new FormControl(0),
+	  max: new FormControl(200)
+  }
+
   options: any = {}
 
   constructor() {
@@ -42,5 +47,6 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
   	/* Detect Input() Changes */
+	
   }
 }

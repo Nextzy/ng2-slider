@@ -6,6 +6,16 @@
 		height: $slider-bar-height;
 		width: 100%;
 		background-color: $slider-bar-color;
+		position: relative;
+		
+		.slider-bar-highlight {
+			position: absolute;
+			z-index: 2;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			background-color: $highlight-color;
+		}
 	}
 
 	.slider-labels {

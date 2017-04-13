@@ -30,7 +30,7 @@ export class SliderPickerDirective implements OnInit {
 	parent: any;
 	currentPos: any;
 
-	constructor(private renderer: Renderer, private el: ElementRef) {
+	constructor(private el: ElementRef) {
 		this.onTouchDragHanlder = this.onTouchDragHanlder.bind(this);
 	}
 

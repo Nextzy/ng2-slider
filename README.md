@@ -40,7 +40,7 @@ Zero Configuration
 
 Opt | Type|  Default | Description
 --- | --- | --- | ---
-model | Model, FormControl | - | * Required
+model | FormControl | - | * Required
 min | Number | 0 | Min value of slider
 max | Number | 100 | Max value of slider
 
