@@ -8,6 +8,7 @@ import { SliderBarComponent } from './slider-bar/slider-bar.component';
 import { SliderPickerComponent } from './slider-picker/slider-picker.component';
 import { SliderBarDirective } from './slider-bar/slider-bar.directive';
 import { SliderPickerDirective } from './slider-picker/slider-picker.directive';
+import { SliderPopoverComponent } from './slider-popover/slider-popover.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SliderPickerDirective } from './slider-picker/slider-picker.directive';
     SliderBarComponent,
     SliderPickerComponent,
     SliderBarDirective,
-    SliderPickerDirective
+    SliderPickerDirective,
+    SliderPopoverComponent
   ],
   exports: [
   	Ng2SliderComponent

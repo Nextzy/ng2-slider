@@ -71,6 +71,7 @@ export class SliderPickerComponent implements OnInit {
 
 		if(this.type === 'single') {
 			this.model.setValue(nextVal)
+			this.sModel.setValue(nextVal)
 		} else {
 			const currentValue = this.model.value;
 			const cloneArray = _.clone(currentValue)
@@ -78,8 +79,10 @@ export class SliderPickerComponent implements OnInit {
 			
 			if(closet === currentValue[0]) { 
 				this.model.setValue([nextVal, currentValue[1]])
+				this.sModel.setValue([nextVal, currentValue[1]])
 			} else {
 				this.model.setValue([currentValue[0], nextVal])
+				this.sModel.setValue([currentValue[0], nextVal])
 			}
 		}
 	} 

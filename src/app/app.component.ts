@@ -23,10 +23,10 @@ export class Ng2SliderComponent implements OnInit, OnChanges {
   	min: 0,
   	max: 100,
   	readonly: false,
-	trigger: 5,
+	trigger: 1,
   	label: {
   		range: 10,
-  		custom: '{{value}}'
+  		format: '$9'
   	},
 	popover: {
 		autohide: true

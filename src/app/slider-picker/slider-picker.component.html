@@ -11,7 +11,12 @@
         [opts]="opts"
         (onChange)="onChange($event)"
         (onFinish)="onFinish($event)"
-        ></div>
+        >
+            <ng2-slider-popover
+                [value]="model.value"
+                [opts]="opts"
+            ></ng2-slider-popover>
+        </div>
 
     <div appSliderPicker
         #picker2
@@ -25,7 +30,12 @@
         [maxValue]="model.value[1]"
         (onChange)="onChange($event)"
         (onFinish)="onFinish($event)"
-        ></div>
+        >
+        
+            <ng2-slider-popover
+                [value]="model.value[0]"
+                [opts]="opts"></ng2-slider-popover>
+        </div>
 
     <div appSliderPicker
         #picker3
@@ -39,6 +49,10 @@
         [index]="1"
         (onChange)="onChange($event)"
         (onFinish)="onFinish($event)"
-        ></div>
+        >
+        <ng2-slider-popover
+            [value]="model.value[1]"
+            [opts]="opts"></ng2-slider-popover>
+        </div>
     </div>
 </div>
