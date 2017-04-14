@@ -5,7 +5,7 @@ An Simple Angular2 Slider Component
 ## Install
 
 ```
-npm install nextzy/ng2-slider
+npm install ng2-slider
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ npm install nextzy/ng2-slider
 Import slider module into you application
 
 ```
-import { Ng2SliderModule } from 'nextzy/ng2-slider';
+import { Ng2SliderModule } from 'ng2-slider';
 ```
 
 Import Stylesheet ( with SCSS ) in `styles.scss`
@@ -24,13 +24,13 @@ Import Stylesheet ( with SCSS ) in `styles.scss`
 ...
 ```
 
-Zero Configuration
+Add Component and Configuration
 
 ```
 <ng2-slider
 	[max]="0"
 	[min]="100"
-	[model]=""
+	[model]="slider"
 ></ng2-slider>
 ```
 
@@ -43,11 +43,21 @@ Opt | Type|  Default | Description
 model | FormControl | - | * Required
 min | Number | 0 | Min value of slider
 max | Number | 100 | Max value of slider
+defaultValue |  Number | 0 | Default Value of Slider
+readonly | Boolean | false | Readonly Flag
+opts | Object | - | Configuration by Object
 
+Options References
 
-### Theme Customize
+Opt | Type | Default | Description
+--- | --- | --- | ---
+min | Number | 0 | Min value of slider
+max | Number | 100 | Max value of slider
+defaultValue |  Number | 0 | Default Value of Slider
+readonly | Boolean | false | Readonly Flag
+opts | Object | - | Configuration by Object
 
-
+* Note that options by attr is more priority than options by object
 
 ### Browser Support
 
